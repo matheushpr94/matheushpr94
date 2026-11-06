@@ -84,8 +84,27 @@ def medidas(snap: dict) -> dict:
         s -= timedelta(days=7)
     ultimos7 = sum(n for d, n in dias.items() if d > ultimo - timedelta(days=7))
     fase = next(txt for limite, txt in FASES if total < limite)
+    # maior sequência de semanas ativas, dias ativos no último ano e o melhor dia
+    maior, corrida = 0, 0
+    for seg in sorted(semanas):
+        corrida = corrida + 1 if semanas[seg] > 0 else 0
+        maior = max(maior, corrida)
+    ano = {d: n for d, n in dias.items() if d > ultimo - timedelta(days=365)}
+    ativos_ano = sum(1 for n in ano.values() if n > 0)
+    melhor_dia = max(dias, key=lambda d: dias[d])
+    # barrinha das últimas 12 semanas, uma letra por semana (contribuições na semana)
+    blocos = " ▁▂▃▄▅▆▇█"
+    ult12 = []
+    s = seg_atual - timedelta(days=7 * 12)  # 12 semanas fechadas, sem a semana em curso
+    for _ in range(12):
+        ult12.append(sum(n for d, n in dias.items() if s <= d < s + timedelta(days=7)))
+        s += timedelta(days=7)
+    topo = max(ult12) or 1
+    barra = "".join(blocos[min(8, round(v / topo * 8))] for v in ult12)
     return {"linguas": linguas, "n_repos": len(repos), "cores": snap["language_colors"],
-            "total": total, "seq": seq, "ultimos7": ultimos7, "fase": fase, "dia": ultimo}
+            "total": total, "seq": seq, "ultimos7": ultimos7, "fase": fase, "dia": ultimo,
+            "maior": maior, "ativos_ano": ativos_ano, "melhor_dia": melhor_dia,
+            "melhor_n": dias[melhor_dia], "barra": barra}
 
 
 def legenda(m: dict, comportamento: str) -> str:
@@ -104,6 +123,9 @@ def legenda(m: dict, comportamento: str) -> str:
         f"- **Tamanho:** {total} contribuições desde que criei a conta ({m['fase']})\n"
         f"- **Marcas no corpo:** {m['seq']} semana{plural} seguida{plural} com atividade\n"
         f"- **Hoje ele {nada}:** {m['ultimos7']} contribuições nos últimos 7 dias\n\n"
+        f"Últimas 12 semanas completas: <code>{m['barra']}</code><br/>\n"
+        f"Maior sequência: {m['maior']} semanas · {m['ativos_ano']} dias ativos no último ano · "
+        f"recorde: {m['melhor_n']} contribuições em {m['melhor_dia'].strftime('%d/%m/%Y')}\n\n"
         '<sub>Feito com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; '
         f"dados até {m['dia'].strftime('%d/%m/%Y')}.</sub>\n"
         '<br clear="left"/>\n'
