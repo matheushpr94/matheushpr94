@@ -108,27 +108,40 @@ def medidas(snap: dict) -> dict:
 
 
 def legenda(m: dict, comportamento: str) -> str:
-    chips = " · ".join(
-        f"![{l}](https://img.shields.io/badge/{l.replace(' ', '%20').replace('-', '--')}-{n}%20repo{'s' if n > 1 else ''}-{m['cores'].get(l, '#888888').lstrip('#')})"
-        for l, n in m["linguas"].most_common())
-    nada = COMPORTAMENTO.get(comportamento, comportamento)
+    """Bloco do README em tabela de duas colunas: imagem à esquerda, dados à direita.
+
+    Tabela em vez de imagem flutuante (align="left"): no GitHub o float deixa os
+    marcadores da lista encostados na imagem. A tabela mantém a coluna de texto
+    separada, com espaçamento fixo, em qualquer largura de tela.
+    """
+    def selo(l: str, n: int) -> str:
+        rotulo = l.replace(" ", "%20").replace("-", "--")
+        cor = m["cores"].get(l, "#888888").lstrip("#")
+        s = "s" if n > 1 else ""
+        return (f'<img src="https://img.shields.io/badge/{rotulo}-{n}%20repo{s}-{cor}" '
+                f'alt="{l}">')
+
+    chips = " ".join(selo(l, n) for l, n in m["linguas"].most_common())
     total = f"{m['total']:,}".replace(",", ".")
     plural = "s" if m["seq"] != 1 else ""
+    recorde = m["melhor_dia"].strftime("%d/%m/%Y")
     return (
         "<!-- KOI:INICIO (gerado todo dia pelo workflow koi.yml; não editar à mão) -->\n"
-        '<img src="koi/lago.gif" width="320" align="left" '
-        'alt="Koi num lago, desenhado a partir da minha atividade pública no GitHub">\n\n'
-        "**Meu koi** é redesenhado todo dia a partir da minha atividade pública no GitHub.\n\n"
-        f"- **Cores:** as linguagens dos meus {m['n_repos']} repositórios públicos {chips}\n"
-        f"- **Tamanho:** {total} contribuições desde que criei a conta ({m['fase']})\n"
-        f"- **Marcas no corpo:** {m['seq']} semana{plural} seguida{plural} com atividade\n"
-        f"- **Hoje ele {nada}:** {m['ultimos7']} contribuições nos últimos 7 dias\n\n"
-        f"Últimas 12 semanas completas: <code>{m['barra']}</code><br/>\n"
-        f"Maior sequência: {m['maior']} semanas · {m['ativos_ano']} dias ativos no último ano · "
-        f"recorde: {m['melhor_n']} contribuições em {m['melhor_dia'].strftime('%d/%m/%Y')}\n\n"
-        '<sub>Feito com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; '
-        f"dados até {m['dia'].strftime('%d/%m/%Y')}.</sub>\n"
-        '<br clear="left"/>\n'
+        "<table><tr>\n"
+        '<td width="320" valign="top"><img src="koi/lago.gif" width="300" '
+        'alt="Koi gerado a partir da atividade pública no GitHub"></td>\n'
+        '<td valign="top">\n\n'
+        "**Atividade no GitHub.** A imagem é gerada todos os dias a partir dos dados públicos: as cores vêm das linguagens e o tamanho, do volume de contribuições.\n\n"
+        f"**Linguagens** em {m['n_repos']} repositórios públicos:<br/>\n{chips}\n\n"
+        f"**Contribuições:** {total} no total<br/>\n"
+        f"**Constância:** {m['seq']} semana{plural} consecutiva{plural} com atividade; "
+        f"{m['ativos_ano']} dias ativos no último ano<br/>\n"
+        f"**Recorde diário:** {m['melhor_n']} contribuições ({recorde})\n\n"
+        f"**Últimas 12 semanas:** <code>{m['barra']}</code>\n\n"
+        '<sub>Gerado com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; '
+        f"dados até {m['dia'].strftime('%d/%m/%Y')}.</sub>\n\n"
+        "</td>\n"
+        "</tr></table>\n"
         "<!-- KOI:FIM -->"
     )
 
