@@ -151,7 +151,7 @@ def main() -> int:
     bloco = legenda(medidas(snap), comportamento)
     readme = Path(readme_path)
     t = readme.read_text()
-    padrao = re.compile(r"<!-- KOI:INICIO.*?<!-- KOI:FIM -->", re.S)
+    padrao = re.compile(r"<!-- KOI:INICIO.*?<!-- KOI:FIM[^>]*-->", re.S)
     antigo = '<img src="koi/koi.gif" width="256" alt="Koi desenhado a partir da minha atividade no GitHub">'
     if padrao.search(t):
         t = padrao.sub(lambda _: bloco, t)
