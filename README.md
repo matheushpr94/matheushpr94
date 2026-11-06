@@ -1,5 +1,7 @@
 # Matheus Rosa
 
+<img src="koi/koi.gif" width="256" alt="Koi desenhado a partir da minha atividade no GitHub">
+
 Estudante de Ciência da Computação e residente em IA na UnB. Tenho dois agentes de IA em
 produção, um na gestão financeira de um imóvel de temporada e outro para um cliente, e gosto de avaliar modelos com piso de
 comparação e com os erros medidos.
