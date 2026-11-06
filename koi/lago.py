@@ -131,18 +131,15 @@ def legenda(m: dict, comportamento: str) -> str:
         '<td width="320" valign="top"><img src="koi/lago.gif" width="300" '
         'alt="Koi gerado a partir da atividade pública no GitHub"></td>\n'
         '<td valign="top">\n\n'
-        "**Atividade no GitHub.** A imagem é gerada todos os dias a partir dos dados públicos: as cores vêm das linguagens e o tamanho, do volume de contribuições.\n\n"
+        "Um koi que cresce a cada commit e ganha as cores das linguagens que eu uso.\n\n"
         f"**Linguagens** em {m['n_repos']} repositórios públicos:<br/>\n{chips}\n\n"
         f"**Contribuições:** {total} no total<br/>\n"
         f"**Constância:** {m['seq']} semana{plural} consecutiva{plural} com atividade; "
-        f"{m['ativos_ano']} dias ativos no último ano<br/>\n"
-        f"**Recorde diário:** {m['melhor_n']} contribuições ({recorde})\n\n"
+        f"{m['ativos_ano']} dias ativos no último ano\n\n"
         f"**Últimas 12 semanas:** <code>{m['barra']}</code>\n\n"
-        '<sub>Gerado com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; '
-        f"dados até {m['dia'].strftime('%d/%m/%Y')}.</sub>\n\n"
         "</td>\n"
         "</tr></table>\n"
-        "<!-- KOI:FIM -->"
+        "<!-- KOI:FIM (koi desenhado por github.com/yalongwastaken/git-koi, licença MIT) -->"
     )
 
 
