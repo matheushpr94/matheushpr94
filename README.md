@@ -5,20 +5,25 @@ produção, um na gestão financeira de um imóvel de temporada e outro para um 
 comparação e com os erros medidos.
 
 <!-- KOI:INICIO (gerado todo dia pelo workflow koi.yml; não editar à mão) -->
-<img src="koi/lago.gif" width="320" align="left" alt="Koi num lago, desenhado a partir da minha atividade pública no GitHub">
+<table><tr>
+<td width="320" valign="top"><img src="koi/lago.gif" width="300" alt="Koi gerado a partir da atividade pública no GitHub"></td>
+<td valign="top">
 
-**Meu koi** é redesenhado todo dia a partir da minha atividade pública no GitHub.
+**Atividade no GitHub.** A imagem é gerada todos os dias a partir dos dados públicos: as cores vêm das linguagens e o tamanho, do volume de contribuições.
 
-- **Cores:** as linguagens dos meus 9 repositórios públicos ![Python](https://img.shields.io/badge/Python-4%20repos-3572a5) · ![JavaScript](https://img.shields.io/badge/JavaScript-2%20repos-f1e05a) · ![Kotlin](https://img.shields.io/badge/Kotlin-1%20repo-a97bff) · ![TypeScript](https://img.shields.io/badge/TypeScript-1%20repo-3178c6) · ![Jupyter Notebook](https://img.shields.io/badge/Jupyter%20Notebook-1%20repo-da5b0b)
-- **Tamanho:** 7.857 contribuições desde que criei a conta (adulto em formação)
-- **Marcas no corpo:** 36 semanas seguidas com atividade
-- **Hoje ele nada tranquilo (um dia comum):** 122 contribuições nos últimos 7 dias
+**Linguagens** em 9 repositórios públicos:<br/>
+<img src="https://img.shields.io/badge/Python-4%20repos-3572a5" alt="Python"> <img src="https://img.shields.io/badge/JavaScript-2%20repos-f1e05a" alt="JavaScript"> <img src="https://img.shields.io/badge/Kotlin-1%20repo-a97bff" alt="Kotlin"> <img src="https://img.shields.io/badge/TypeScript-1%20repo-3178c6" alt="TypeScript"> <img src="https://img.shields.io/badge/Jupyter%20Notebook-1%20repo-da5b0b" alt="Jupyter Notebook">
 
-Últimas 12 semanas completas: <code>▃▂▆▆▅▄▅▃█▅▃▇</code><br/>
-Maior sequência: 36 semanas · 228 dias ativos no último ano · recorde: 206 contribuições em 29/10/2026
+**Contribuições:** 7.857 no total<br/>
+**Constância:** 36 semanas consecutivas com atividade; 228 dias ativos no último ano<br/>
+**Recorde diário:** 206 contribuições (29/10/2026)
 
-<sub>Feito com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; dados até 05/11/2026.</sub>
-<br clear="left"/>
+**Últimas 12 semanas:** <code>▃▂▆▆▅▄▅▃█▅▃▇</code>
+
+<sub>Gerado com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; dados até 05/11/2026.</sub>
+
+</td>
+</tr></table>
 <!-- KOI:FIM -->
 
 ### Projetos
