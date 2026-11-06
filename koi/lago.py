@@ -15,7 +15,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-LADO = 256
+LADO = 320
 COMPORTAMENTO = {
     "deep rest": "descansa no fundo (60 dias ou mais sem contribuições)",
     "rest": "descansa (14 dias ou mais sem contribuições)",
@@ -41,7 +41,7 @@ def fundo(frame_idx: int, total: int) -> Image.Image:
     d = ImageDraw.Draw(im)
     for i in range(6):  # reflexos de luz
         cx = (i * 43 + frame_idx * 2) % LADO
-        cy = 20 + (i * 31) % 190
+        cy = 24 + (i * 37) % 250
         d.ellipse([cx, cy, cx + 13, cy + 2], fill=(205, 235, 240))
     return im
 
@@ -97,7 +97,7 @@ def legenda(m: dict, comportamento: str) -> str:
     plural = "s" if m["seq"] != 1 else ""
     return (
         "<!-- KOI:INICIO (gerado todo dia pelo workflow koi.yml; não editar à mão) -->\n"
-        '<img src="koi/lago.gif" width="256" align="left" '
+        '<img src="koi/lago.gif" width="320" align="left" '
         'alt="Koi num lago, desenhado a partir da minha atividade pública no GitHub">\n\n'
         "**Meu koi** é redesenhado todo dia a partir da minha atividade pública no GitHub.\n\n"
         f"- **Cores:** as linguagens dos meus {m['n_repos']} repositórios públicos {chips}\n"

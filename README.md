@@ -1,5 +1,9 @@
 # Matheus Rosa
 
+Estudante de Ciência da Computação e residente em IA na UnB. Tenho dois agentes de IA em
+produção, um na gestão financeira de um imóvel de temporada e outro para um cliente, e gosto de avaliar modelos com piso de
+comparação e com os erros medidos.
+
 <!-- KOI:INICIO (gerado todo dia pelo workflow koi.yml; não editar à mão) -->
 <img src="koi/lago.gif" width="256" align="left" alt="Koi num lago, desenhado a partir da minha atividade pública no GitHub">
 
@@ -13,10 +17,6 @@
 <sub>Feito com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; dados até 05/11/2026.</sub>
 <br clear="left"/>
 <!-- KOI:FIM -->
-
-Estudante de Ciência da Computação e residente em IA na UnB. Tenho dois agentes de IA em
-produção, um na gestão financeira de um imóvel de temporada e outro para um cliente, e gosto de avaliar modelos com piso de
-comparação e com os erros medidos.
 
 ### Projetos
 
