@@ -9,22 +9,19 @@ comparação e com os erros medidos.
 <td width="320" valign="top"><img src="koi/lago.gif" width="300" alt="Koi gerado a partir da atividade pública no GitHub"></td>
 <td valign="top">
 
-**Atividade no GitHub.** A imagem é gerada todos os dias a partir dos dados públicos: as cores vêm das linguagens e o tamanho, do volume de contribuições.
+Um koi que cresce a cada commit e ganha as cores das linguagens que eu uso.
 
 **Linguagens** em 9 repositórios públicos:<br/>
 <img src="https://img.shields.io/badge/Python-4%20repos-3572a5" alt="Python"> <img src="https://img.shields.io/badge/JavaScript-2%20repos-f1e05a" alt="JavaScript"> <img src="https://img.shields.io/badge/Kotlin-1%20repo-a97bff" alt="Kotlin"> <img src="https://img.shields.io/badge/TypeScript-1%20repo-3178c6" alt="TypeScript"> <img src="https://img.shields.io/badge/Jupyter%20Notebook-1%20repo-da5b0b" alt="Jupyter Notebook">
 
 **Contribuições:** 7.857 no total<br/>
-**Constância:** 36 semanas consecutivas com atividade; 228 dias ativos no último ano<br/>
-**Recorde diário:** 206 contribuições (29/10/2026)
+**Constância:** 36 semanas consecutivas com atividade; 228 dias ativos no último ano
 
 **Últimas 12 semanas:** <code>▃▂▆▆▅▄▅▃█▅▃▇</code>
 
-<sub>Gerado com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; dados até 05/11/2026.</sub>
-
 </td>
 </tr></table>
-<!-- KOI:FIM -->
+<!-- KOI:FIM (koi desenhado por github.com/yalongwastaken/git-koi, licença MIT) -->
 
 ### Projetos
 
