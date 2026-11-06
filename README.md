@@ -5,7 +5,7 @@ produção, um na gestão financeira de um imóvel de temporada e outro para um 
 comparação e com os erros medidos.
 
 <!-- KOI:INICIO (gerado todo dia pelo workflow koi.yml; não editar à mão) -->
-<img src="koi/lago.gif" width="256" align="left" alt="Koi num lago, desenhado a partir da minha atividade pública no GitHub">
+<img src="koi/lago.gif" width="320" align="left" alt="Koi num lago, desenhado a partir da minha atividade pública no GitHub">
 
 **Meu koi** é redesenhado todo dia a partir da minha atividade pública no GitHub.
 
