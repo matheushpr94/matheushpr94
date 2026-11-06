@@ -1,5 +1,7 @@
-# Desenha o koi do perfil a partir da atividade pública (yalongwastaken/git-koi).
-# O action está fixado no commit revisado em 06/11/2026 (v1.0.2), não na tag móvel @v1.
+# Desenha o koi do perfil a partir da atividade pública (yalongwastaken/git-koi),
+# coloca num lago e escreve a legenda no README (koi/lago.py).
+# O git-koi está fixado no commit revisado em 06/11/2026 (v1.0.2), não na tag móvel @v1.
+# O binário é baixado da release e conferido pelo sha256 publicado.
 name: Koi
 
 on:
@@ -7,7 +9,7 @@ on:
     - cron: "20 0 * * *"
   workflow_dispatch:
   push:
-    paths: [.github/workflows/koi.yml]
+    paths: [.github/workflows/koi.yml, koi/lago.py]
 
 permissions:
   contents: write
@@ -19,19 +21,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: yalongwastaken/git-koi@7305e9b1fadee6f43d3b4fa543a25d4cde79856e # v1.0.2
-        with:
-          body: white
-          output-dir: koi
-      - name: Commit the koi if it changed
+      - name: Baixar git-koi v1.0.2 e conferir o sha256
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          a=git-koi-1.0.2-x86_64-unknown-linux-musl.tar.gz
+          gh release download v1.0.2 --repo yalongwastaken/git-koi --dir "$RUNNER_TEMP" --pattern "$a" --pattern "$a.sha256"
+          cd "$RUNNER_TEMP" && sha256sum -c "$a.sha256" && tar -xzf "$a"
+          echo "$RUNNER_TEMP/git-koi-1.0.2-x86_64-unknown-linux-musl" >> "$GITHUB_PATH"
+      - name: Coletar e desenhar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git-koi collect "${{ github.repository_owner }}" --output "$RUNNER_TEMP/snap.json"
+          git-koi render "$RUNNER_TEMP/snap.json" --output-dir koi --body white | tee "$RUNNER_TEMP/render.txt"
+          # primeira palavra(s) antes de " for ": cruise, dart, rest, deep rest, surface feeding
+          sed -E 's/ for .*//' "$RUNNER_TEMP/render.txt" | head -1 > "$RUNNER_TEMP/comportamento.txt"
+      - name: Lago e legenda
+        run: |
+          pip install --quiet pillow==11.3.0 numpy==2.3.4
+          python koi/lago.py "$RUNNER_TEMP/snap.json" koi/koi.gif "$(cat "$RUNNER_TEMP/comportamento.txt")" README.md
+      - name: Commit se mudou
         shell: bash
         run: |
-          git add koi/koi.gif
+          git add koi/koi.gif koi/lago.gif README.md
           if git diff --cached --quiet; then
-            echo "The koi is unchanged; nothing to commit."
+            echo "Nada mudou."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --quiet --message "koi: draw the day's koi"
+          git commit --quiet --message "koi: desenho do dia"
           git push --quiet
