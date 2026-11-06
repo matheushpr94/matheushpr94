@@ -14,6 +14,9 @@ comparação e com os erros medidos.
 - **Marcas no corpo:** 36 semanas seguidas com atividade
 - **Hoje ele nada tranquilo (um dia comum):** 122 contribuições nos últimos 7 dias
 
+Últimas 12 semanas completas: <code>▃▂▆▆▅▄▅▃█▅▃▇</code><br/>
+Maior sequência: 36 semanas · 228 dias ativos no último ano · recorde: 206 contribuições em 29/10/2026
+
 <sub>Feito com <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>; dados até 05/11/2026.</sub>
 <br clear="left"/>
 <!-- KOI:FIM -->
