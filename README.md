@@ -12,10 +12,10 @@ Um koi que cresce a cada commit e ganha as cores das linguagens que eu uso.
 **Linguagens** em 9 repositórios públicos:<br/>
 <img src="https://img.shields.io/badge/Python-4%20repos-3572a5" alt="Python"> <img src="https://img.shields.io/badge/JavaScript-2%20repos-f1e05a" alt="JavaScript"> <img src="https://img.shields.io/badge/Kotlin-1%20repo-a97bff" alt="Kotlin"> <img src="https://img.shields.io/badge/TypeScript-1%20repo-3178c6" alt="TypeScript"> <img src="https://img.shields.io/badge/Jupyter%20Notebook-1%20repo-da5b0b" alt="Jupyter Notebook">
 
-**Contribuições:** 7.990 no total<br/>
+**Contribuições:** 7.992 no total<br/>
 **Constância:** 36 semanas consecutivas com atividade; 230 dias ativos no último ano
 
-**Últimas 12 semanas:** <code>▃▂▆▆▅▄▅▃█▅▃▇</code>
+**Últimas 12 semanas:** <code>▂▆▆▅▄▅▃█▅▃▇▃</code>
 
 </td>
 </tr></table>
