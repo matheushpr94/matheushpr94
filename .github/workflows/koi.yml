@@ -2,6 +2,10 @@
 # coloca num lago e escreve a legenda no README (koi/lago.py).
 # O git-koi está fixado no commit revisado em 06/11/2026 (v1.0.2), não na tag móvel @v1.
 # O binário é baixado da release e conferido pelo sha256 publicado.
+# Também desenha o Pac-Man comendo o calendário do ano (pacman/gerar.mjs) com a BIBLIOTECA
+# pacman-contribution-graph 5.5.2 (versão e hashes fixos no package-lock.json). O action pronto do
+# autor não é usado: ele envia o usuário e a pontuação para o servidor dele (ranking público).
+# Aqui o domínio do autor fica bloqueado na rede durante a geração e o código instalado é conferido.
 name: Koi
 
 on:
@@ -9,7 +13,7 @@ on:
     - cron: "20 0 * * *"
   workflow_dispatch:
   push:
-    paths: [.github/workflows/koi.yml, koi/lago.py]
+    paths: [.github/workflows/koi.yml, koi/lago.py, pacman/gerar.mjs, pacman/package-lock.json]
 
 permissions:
   contents: write
@@ -41,15 +45,30 @@ jobs:
         run: |
           pip install --quiet pillow==11.3.0 numpy==2.3.4
           python koi/lago.py "$RUNNER_TEMP/snap.json" koi/koi.gif "$(cat "$RUNNER_TEMP/comportamento.txt")" README.md
+      - name: Pac-Man (sem enviar nada ao autor)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          # bloqueia na rede os domínios do autor (servidor de estatística e o do caminho GitLab, que não usamos)
+          echo "0.0.0.0 elec.abozanona.me abozanona.me pacman.abozanona.me v0-new-project-q1hhrdodoye-abozanona-gmailcoms-projects.vercel.app" | sudo tee -a /etc/hosts >/dev/null
+          cd pacman
+          npm ci --ignore-scripts --no-audit --no-fund
+          # a biblioteca só pode citar estes endereços (conferido na 5.5.2); qualquer outro aborta
+          f=node_modules/pacman-contribution-graph/dist/pacman-contribution-graph.min.js
+          grep -oE "https?://[a-zA-Z0-9./_-]+" "$f" | sort -u > /tmp/urls.txt
+          printf '%s\n' http://www.w3.org/2000/svg https://api.github.com/graphql https://api.github.com/search/commits \
+            https://github.com/Platane/snk https://v0-new-project-q1hhrdodoye-abozanona-gmailcoms-projects.vercel.app/api/contributions | sort -u > /tmp/permitidos.txt
+          if ! diff /tmp/permitidos.txt /tmp/urls.txt; then echo "A biblioteca mudou de endereços: abortado."; exit 1; fi
+          node gerar.mjs "${{ github.repository_owner }}" .
       - name: Commit se mudou
         shell: bash
         run: |
-          git add koi/koi.gif koi/lago.gif README.md
+          git add koi/koi.gif koi/lago.gif README.md pacman/pacman.svg pacman/pacman-escuro.svg
           if git diff --cached --quiet; then
             echo "Nada mudou."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --quiet --message "koi: desenho do dia"
+          git commit --quiet --message "perfil: koi e pac-man do dia"
           git push --quiet

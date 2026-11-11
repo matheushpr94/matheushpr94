@@ -21,6 +21,12 @@ Um koi que cresce a cada commit e ganha as cores das linguagens que eu uso.
 </tr></table>
 <!-- KOI:FIM (koi desenhado por github.com/yalongwastaken/git-koi, licença MIT) -->
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="pacman/pacman-escuro.svg">
+  <img src="pacman/pacman.svg" alt="Pac-Man percorrendo o calendário de contribuições do último ano">
+</picture>
+<!-- Pac-Man gerado com a biblioteca github.com/abozanona/pacman-contribution-graph -->
+
 ### Projetos
 
 | Projeto | Resumo |

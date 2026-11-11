@@ -1,0 +1,9 @@
+{
+	"name": "perfil-pacman",
+	"private": true,
+	"type": "module",
+	"description": "Gera o Pac-Man do perfil com a biblioteca pacman-contribution-graph (sem o action do autor, que envia o usuário e a pontuação para o servidor dele).",
+	"dependencies": {
+		"pacman-contribution-graph": "5.5.2"
+	}
+}
